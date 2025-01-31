@@ -1,8 +1,8 @@
-# Teste de DevOps - CI/CD e Deploy no Kubernetes
+# Teste de DevOps - CI/CD, Deploy no Kubernetes e Observabilidade
 
 ## Objetivo
 
-O objetivo deste teste é avaliar a capacidade do candidato em configurar uma esteira de CI/CD para a aplicação [api-node](https://github.com/tiagohique/api-node). A esteira deve realizar o deploy automatizado em um cluster Kubernetes e configurar um Horizontal Pod Autoscaler (HPA) para escalabilidade dinâmica.
+O objetivo deste teste é avaliar a capacidade do candidato em configurar uma esteira de CI/CD para a aplicação [api-node](https://github.com/tiagohique/api-node). A esteira deve realizar o deploy automatizado em um cluster Kubernetes, configurar um Horizontal Pod Autoscaler (HPA) para escalabilidade dinâmica e implementar observabilidade para monitoramento da aplicação.
 
 ## Requisitos do Teste
 
@@ -21,11 +21,21 @@ O objetivo deste teste é avaliar a capacidade do candidato em configurar uma es
      - **ConfigMap/Secret** caso necessário para armazenar configurações.
      - **HPA (Horizontal Pod Autoscaler)** configurado para escalar de **2 até 10 pods**, baseado no consumo de CPU (métrica recomendada: 70% de uso da CPU por pod).
 
-3. **Entrega do Teste**:
+3. **Configuração de Observabilidade**:
+   - Implementar uma solução de monitoramento para a aplicação, utilizando ferramentas como Prometheus, Grafana, Datadog, New Relic ou outra equivalente.
+   - Criar dashboards básicos para exibir métricas de uso de CPU, memória e quantidade de pods em execução.
+   - Configurar logs centralizados utilizando uma stack de observabilidade como EFK (Elasticsearch, Fluentd, Kibana) ou Loki + Grafana.
+   - Configurar alertas para detecção de falhas, por exemplo:
+     - Uso de CPU acima de 80% por um período contínuo de 5 minutos.
+     - Número de pods abaixo de 2 (indicando falha no escalonamento).
+     - Erros HTTP 5xx detectados nos logs.
+
+4. **Entrega do Teste**:
    - Criar um repositório no GitHub ou GitLab contendo:
      - Arquivos de configuração do CI/CD.
      - Manifests Kubernetes.
-     - Um `README.md` explicando como configurar e rodar o pipeline.
+     - Configuração das ferramentas de monitoramento e observabilidade.
+     - Um `README.md` explicando como configurar e rodar o pipeline e visualizar métricas e logs.
    - O candidato pode utilizar um cluster Kubernetes local (Minikube, Kind) ou um cluster gerenciado (EKS, GKE, AKS, OKE, etc.).
 
 ## Avaliação
@@ -34,6 +44,7 @@ O candidato será avaliado nos seguintes pontos:
 - Estrutura e organização do repositório.
 - Clareza e eficiência na configuração do CI/CD.
 - Boas práticas no uso do Kubernetes.
+- Implementação da observabilidade e capacidade de monitoramento.
 - Capacidade de automação e escalabilidade da aplicação.
 - Documentação clara e bem escrita.
 
